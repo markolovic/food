@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213165914) do
+ActiveRecord::Schema.define(version: 20150213171112) do
 
-  create_table "daily_plan", force: true do |t|
+  create_table "daily_plans", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
