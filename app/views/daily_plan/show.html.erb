@@ -1,0 +1,8 @@
+<h1>Daily plan goes here</h1>
+<ul>
+<% @plan.items.each do |item| %>
+	<li class="food-item">
+		<%= item.name %>
+	</li>
+<% end %>
+</ul>
