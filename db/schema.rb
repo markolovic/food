@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213171112) do
+ActiveRecord::Schema.define(version: 20150214134030) do
 
   create_table "daily_plans", force: true do |t|
     t.datetime "created_at"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20150213171112) do
     t.float    "calories"
     t.float    "protein"
     t.float    "fat"
-    t.float    "quantity"
+    t.float    "unit_quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
