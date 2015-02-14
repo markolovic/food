@@ -1,1 +1,3 @@
-consider adding quantity type to item model i.e. grams or ml
+* Consider adding quantity type to item model i.e. grams or ml
+* Figure out how to deal with item quantity in daily plan.
+	Use quantity attribute in item model for now
