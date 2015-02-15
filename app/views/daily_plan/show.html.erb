@@ -1,8 +1,10 @@
 <h1>Daily plan goes here</h1>
-<ul>
+<table>
 <% @plan.items.each do |item| %>
-	<li class="food-item">
-		<%= item.name %>
-	</li>
+	<tr class="food-item">
+		<td><%= item.name %></td>
+		<td><%= item.total_protein%></td>
+		<td><%= item.total_calories%></td>
+	</tr>
 <% end %>
-</ul>
+</table>
