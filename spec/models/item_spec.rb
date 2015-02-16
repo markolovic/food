@@ -30,6 +30,21 @@ describe Item, '#total_calories' do
 	end
 end
 
+describe Item, '#units' do
+	context 'quantity is set' do
+		let(:item) { create(:item, quantity: 2000) }
+		it 'returns the right amount'	do
+			expect(item.units).to eq 2
+		end
+	end
+	context 'quantity is nil' do
+		let(:item) { create(:item) }
+		it 'should return nil' do
+			expect(item.units).to be nil
+		end
+	end
+end
+
 describe Item, '#part_of_plan?' do
 	let(:milk) { build(:item) }
 	context 'when item is part of plan' do

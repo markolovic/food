@@ -10,6 +10,10 @@ class Item < ActiveRecord::Base
 		calories * (quantity / 100)
 	end
 
+	def units
+		quantity ? quantity / unit_quantity : nil
+	end
+
 	def part_of_plan?
 		daily_plans.all.any?
 		# associated plans must be persisted to the DB

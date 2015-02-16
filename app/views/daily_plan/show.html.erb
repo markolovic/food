@@ -1,10 +1,17 @@
 <h1>Daily plan goes here</h1>
 <table>
 <% @plan.items.each do |item| %>
-	<tr class="food-item">
-		<td><%= item.name %></td>
-		<td><%= item.total_protein%></td>
-		<td><%= item.total_calories%></td>
-	</tr>
+  <tr class="food-item">
+    <td><%= item.units %></td>
+    <td><%= item.name %></td>
+    <td><%= item.total_protein%></td>
+    <td><%= item.total_calories%></td>
+  </tr>
 <% end %>
+  <tr>
+    <td></td>
+    <td></td>
+    <td><%= @plan.total_protein %></td>
+    <td><%= @plan.total_calories %></td>
+  </tr>
 </table>
