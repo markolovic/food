@@ -11,6 +11,7 @@ class DailyPlansController < ApplicationController
 		@plan = DailyPlan.find(params[:id])
 		if params.has_key?(:items)
 			params[:items].each do |key, value|
+				key = key.gsub('-', ' ')
 				@plan.items.where({name: key}).take.update(quantity: value)
 			end
 		end
