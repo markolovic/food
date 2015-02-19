@@ -15,7 +15,8 @@ class DailyPlansController < ApplicationController
 				@plan.items.where({name: key}).take.update(quantity: value)
 			end
 		end
-		redirect_to daily_plan_path(params[:id])
+		#redirect_to daily_plan_path(params[:id])
+		redirect_to root_path
 		# TODO ajax
 		# TODO refactor?
 	end
