@@ -2,6 +2,26 @@ require 'rails_helper'
 
 describe Item, 'validations' do
 	let(:milk) { build(:item) }
+	it 'should not have a negative quantity' do
+		milk.quantity = -1
+		expect(milk).not_to be_valid
+	end
+	it 'should not have a negative unit_quantity' do
+		milk.unit_quantity = -1
+		expect(milk).not_to be_valid
+	end
+	it 'should not have negative protein' do
+		milk.protein= -1
+		expect(milk).not_to be_valid
+	end
+	it 'should not have negative calories' do
+		milk.calories= -1
+		expect(milk).not_to be_valid
+	end
+	it 'should not have negative fat' do
+		milk.fat = -1
+		expect(milk).not_to be_valid
+	end
 	context 'item is part of a plan' do
 		it 'should not be valid without a quantity' do
 			plan = create(:daily_plan)
