@@ -3,3 +3,6 @@
 	Use quantity attribute in item model for now
 *	Supplement model for daily_plan
 * Add form to create new item
+* Add ajax to updating quantity form and #update
+* Extract table rows into partial to display each item
+	render @items => li< item.name>/li
