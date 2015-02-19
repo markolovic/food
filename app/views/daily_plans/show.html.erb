@@ -2,9 +2,11 @@
 <%= form_tag("/daily_plans/#{@plan.id}", method: :patch) do %>
 	<table>
 	<% @plan.items.each do |item| %>
-		<tr class="food-item" id="<%= item.name.squish.gsub(' ', '-') %>">
+    <% @item = item; item_name = item.name.squish.gsub(' ', '-')%>
+		<tr class="food-item" id="<%= item_name %>">
 			<td>
-				<%= number_field(:item, :quantity) %>
+        <%= number_field(:item, :quantity, min: 0, name: "items[#{item_name}]", id: "#{item_name}-quantity") %>
+        don't allow negative
 			</td>
 			<td><%= item.name %></td>
 			<td><%= item.total_protein %></td>
@@ -19,7 +21,4 @@
 		</tr>
 	</table>
 	<%= submit_tag("Save") %>
-
-   <%= link_to "All items", items_path, remote: true %>
 <% end %>
-<div id="item-index" ></div>
