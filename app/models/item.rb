@@ -14,6 +14,9 @@ class Item < ActiveRecord::Base
 		quantity ? quantity / unit_quantity : nil
 	end
 
+	def set_units
+	end
+
 	def part_of_plan?
 		daily_plans.all.any?
 		# associated plans must be persisted to the DB

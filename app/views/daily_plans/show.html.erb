@@ -1,0 +1,23 @@
+<h1>Daily plan goes here</h1>
+<%= form_tag("/daily_plans/#{@plan.id}", method: :patch) do %>
+	<table>
+	<% @plan.items.each do |item| %>
+    <% @item = item %>
+		<tr class="food-item" id="<%= item.name.squish.gsub(' ', '-') %>">
+			<td>
+        <%= number_field(:item, :quantity, id: "#{item.name.squish.gsub(' ', '-')}-quantity") %>
+			</td>
+			<td><%= item.name %></td>
+			<td><%= item.total_protein %></td>
+			<td><%= item.total_calories %></td>
+		</tr>
+	<% end %>
+		<tr>
+			<td></td>
+			<td></td>
+			<td><%= @plan.total_protein %></td>
+			<td><%= @plan.total_calories %></td>
+		</tr>
+	</table>
+	<%= submit_tag("Save") %>
+<% end %>

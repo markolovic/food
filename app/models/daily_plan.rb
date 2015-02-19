@@ -1,6 +1,7 @@
 class DailyPlan < ActiveRecord::Base
   has_and_belongs_to_many :items
 	validates_associated :items
+	accepts_nested_attributes_for :items
 	#TODO BUG: only validates items when updating, and not on create
 	
 	def total_protein
@@ -15,4 +16,13 @@ class DailyPlan < ActiveRecord::Base
 		end
 	end
 
+	#TODO need to test
+	def item_names
+		names = []
+		items.all.each do |item|
+			names.push(item.name)
+		end
+		names
+		#TODO refactor!
+	end
 end
