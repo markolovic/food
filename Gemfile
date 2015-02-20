@@ -19,6 +19,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'capybara-webkit'
 end
 
 group :test do
