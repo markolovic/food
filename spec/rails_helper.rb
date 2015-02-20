@@ -33,7 +33,7 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
 
-  #Capybara.javascript_driver = :webkit
+  Capybara.javascript_driver = :webkit
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction

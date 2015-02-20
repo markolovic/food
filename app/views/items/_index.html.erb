@@ -1,1 +1,13 @@
-<p>this is the item index partial</p>
+<h2>Items</h2>
+<table>
+<% @items.each do |item| %>
+  <tr>
+    <td><%= item.unit_quantity %></td>
+    <td><%= item.name %></td>
+    <td><%= item.protein %></td>
+    <td><%= item.fat %></td>
+    <td><%= item.calories %></td>
+  </tr>
+<% end %>
+</table>
+  
