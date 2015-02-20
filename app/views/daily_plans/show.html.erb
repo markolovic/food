@@ -6,7 +6,6 @@
 		<tr class="food-item" id="<%= item_name %>">
 			<td>
         <%= number_field(:item, :quantity, min: 0, name: "items[#{item_name}]", id: "#{item_name}-quantity") %>
-        don't allow negative
 			</td>
 			<td><%= item.name %></td>
 			<td><%= item.total_protein %></td>
@@ -22,3 +21,6 @@
 	</table>
 	<%= submit_tag("Save") %>
 <% end %>
+<%= link_to "All items", items_path, remote: true %>
+<section id="item-index"></section>
+  
