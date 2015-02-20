@@ -6,6 +6,7 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'capybara/rspec'
 require 'factory_girl'
+#require 'capybara/webkit'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -32,6 +33,8 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
 
+  #Capybara.javascript_driver = :webkit
+
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
@@ -43,10 +46,26 @@ RSpec.configure do |config|
     end
   end
 
-  config.around(:each) do |example|
-    DatabaseCleaner.cleaning do
-      example.run
+  # Can't remember where this came from. Won't work with
+  # the js driver fix below
+  #config.around(:each) do |example|
+    #DatabaseCleaner.cleaning do
+      #example.run
+    #end
+  #end
+
+  # Added to work with javascript driver
+  config.before :each do
+    if Capybara.current_driver == :rack_test
+      DatabaseCleaner.strategy = :transaction
+    else
+      DatabaseCleaner.strategy = :truncation
     end
+    DatabaseCleaner.start
+  end
+
+  config.after do
+    DatabaseCleaner.clean
   end
 
   #config.use_transactional_fixtures = true
