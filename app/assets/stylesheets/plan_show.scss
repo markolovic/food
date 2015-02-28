@@ -1,0 +1,30 @@
+// Styling for daily_plans#show view (excluding partials)
+
+.daily-plan {
+  border-collapse: collapse;
+  
+  td, th {
+    padding: 0.4rem;
+    text-align: left;
+  }
+
+  .name-col {
+    padding-right: 15px;
+  }
+
+  .protein-col {
+    padding-right: 10px;
+  }
+
+  .totals-row {
+    border-top: 1px solid #555;
+    letter-spacing: 1px;
+    em { 
+      font-style: normal;
+      font-weight: bold;
+    }
+    small {
+      font-size: 0.8rem;
+    }
+  }
+}

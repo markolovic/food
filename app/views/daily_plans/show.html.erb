@@ -1,23 +1,36 @@
 <h1>Daily plan goes here</h1>
 <%= form_tag("/daily_plans/#{@plan.id}", method: :patch) do %>
-	<table>
-	<% @plan.items.each do |item| %>
-    <% @item = item; item_name = item.name.squish.gsub(' ', '-')%>
-		<tr class="food-item" id="<%= item_name %>">
-			<td>
-        <%= number_field(:item, :quantity, min: 0, name: "items[#{item_name}]", id: "#{item_name}-quantity") %>
-			</td>
-			<td><%= item.name %></td>
-			<td><%= item.total_protein %></td>
-			<td><%= item.total_calories %></td>
-		</tr>
-	<% end %>
-		<tr>
-			<td></td>
-			<td></td>
-			<td><%= @plan.total_protein %></td>
-			<td><%= @plan.total_calories %></td>
-		</tr>
+	<table class="daily-plan"> <%# Add -table? %>
+    <thead> <%# TODO Check whether this is commonly used %>
+      <tr>
+        <th>Quantity</th>
+        <th>Item</th>
+        <th class="protein-col">Protein</th>
+        <th>Calories</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @plan.items.each do |item| %>
+      <% @item = item; item_name = item.name.squish.gsub(' ', '-')%>
+      <tr class="food-item" id="<%= item_name %>">
+        <td>
+          <%= number_field(:item, :quantity, min: 0, name: "items[#{item_name}]", id: "#{item_name}-quantity") %>
+        </td>
+        <td class="name-col">    <%= item.name %>                   </td>
+        <td class="protein-col"> <%= item.total_protein.round(2) %> </td>
+        <td class="calories-col"><%= item.total_calories.round(2) %></td>
+      </tr>
+    <% end %>
+    <%# Use tfoot for totals row? %>
+      <tr class="totals-row">
+        <td></td>
+        <td></td>
+        <td id="protein-total"> <em><%= @plan.total_protein.round(0) %></em> <small>g</small></td>
+        <td id="calories-total"> 
+          <em><%= @plan.total_calories.round(0) %></em> <small>kCal</small>
+        </td>
+      </tr>
+    </tbody>
 	</table>
 	<%= submit_tag("Save") %>
 <% end %>
